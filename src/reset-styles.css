@@ -1,0 +1,31 @@
+/* 1. Usa un modelo de caja más intuitivo */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Elimina los márgenes por defecto */
+* {
+  margin: 0;
+}
+
+/* 3. Mejora la altura de línea y la tipografía en el body */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 4. Mejora la presentación de elementos multimedia */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 5. Hereda las fuentes en campos de texto y botones */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 6. Evita desbordamientos de texto */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
