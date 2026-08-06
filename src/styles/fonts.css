@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Consolas';
+  src: url('../assets/fonts/CONSOLA.TTF') format('truetype');
+  font-weight: regular;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Consolas';
+  src: url('../assets/fonts/CONSOLAB.TTF') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
