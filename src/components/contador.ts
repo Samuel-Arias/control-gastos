@@ -13,6 +13,7 @@ export class ContadorComponent {
     
     this._contadorHTML = this.inicializarContadorHTML()
     this._countup = this.inicializarCountup()
+    this.verificarContador()
   }
 
   private inicializarContadorHTML(): HTMLElement {
@@ -26,24 +27,26 @@ export class ContadorComponent {
     return new CountUp(this._contadorHTML, null, {
       startVal: this._monto,
       duration: 0.5,
-      plugin: new Odometer({ duration: 1.5 }),
+      plugin: new Odometer({ duration: 1.5, lastDigitDelay: 0 }),
       decimalPlaces: 2,
       separator: '.',
       decimal: ',',
-      prefix: '$'
+      prefix: '$',
+      onCompleteCallback: () => this.verificarContador(),
     })
   }
 
-  sumar(cifra: number): void {
-    this._monto += cifra
+  actualizarContador(cifra: number): void {
+    this._monto = this._monto + cifra
     this._countup.update(this._monto)
     localStorage.setItem(lsKeys.CONTADOR, this._monto.toString())
   }
 
-  restar(cifra: number): void {
-    this._monto -= cifra
-    this._countup.update(this._monto)
-    localStorage.setItem(lsKeys.CONTADOR, this._monto.toString())
+  private verificarContador(): void {
+    this._contadorHTML.querySelector('.odometer-numbers')?.querySelectorAll('span').forEach((span) => {
+      if (this._monto < 0) span.classList.add('negativo')
+      else span.classList.remove('negativo')
+    })
   }
 
   get contadorHTML(): HTMLElement {
